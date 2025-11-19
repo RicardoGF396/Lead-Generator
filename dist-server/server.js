@@ -173,7 +173,9 @@ app.post('/api/enrichText', async (req, res) => {
         res.status(500).json({ error: err.message || 'enrichText error' });
     }
 });
-app.get('/*', (req, res) => {
+app.use((req, res, next) => {
+    if (req.path.startsWith('/api'))
+        return next();
     res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 app.listen(PORT, () => {

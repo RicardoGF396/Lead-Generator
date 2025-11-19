@@ -188,9 +188,11 @@ app.post('/api/enrichText', async (req, res) => {
     }
 })
 
-app.get('/*', (req, res) => {
+app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
     res.sendFile(path.join(clientDistPath, 'index.html'));
 });
+
 
 app.listen(PORT, () => {
     console.log(`API running on http://localhost:${PORT}`)
