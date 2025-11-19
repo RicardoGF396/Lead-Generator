@@ -188,7 +188,7 @@ app.post('/api/enrichText', async (req, res) => {
     }
 })
 
-app.get('*', (_req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
