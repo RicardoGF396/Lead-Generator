@@ -2,7 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import axios from 'axios'
-import { scrapeEmailsFromWebsite, sleep } from './helpers.js';
+import { scrapeEmailsFromWebsite, sleep } from './helpers.ts';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

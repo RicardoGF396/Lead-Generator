@@ -33,27 +33,27 @@ const TERMS = [
   { value: "mantenimiento industrial", label: "Mantenimiento industrial" },
 ];
 
-const CITIES_GTO = [
-  { value: "León", label: "León" },
-  { value: "Guanajuato", label: "Guanajuato (capital)" },
-  { value: "San Miguel de Allende", label: "San Miguel de Allende" },
-  { value: "Irapuato", label: "Irapuato" },
-  { value: "Celaya", label: "Celaya" },
-  { value: "Silao", label: "Silao" },
-  { value: "Salamanca", label: "Salamanca" },
-  { value: "San Francisco del Rincón", label: "San Francisco del Rincón" },
-  { value: "Purísima del Rincón", label: "Purísima del Rincón" },
-  { value: "Dolores Hidalgo", label: "Dolores Hidalgo" },
-  { value: "San José Iturbide", label: "San José Iturbide" },
-  { value: "Pénjamo", label: "Pénjamo" },
-  { value: "Salvatierra", label: "Salvatierra" },
-  { value: "Valle de Santiago", label: "Valle de Santiago" },
-  { value: "Cortazar", label: "Cortazar" },
-  { value: "Moroleón", label: "Moroleón" },
-  { value: "Uriangato", label: "Uriangato" },
-  { value: "Acámbaro", label: "Acámbaro" },
-  { value: "Juventino Rosas", label: "Juventino Rosas" },
-  { value: "Villagrán", label: "Villagrán" },
+const CITIES_ZAC = [
+  { value: "Zacatecas", label: "Zacatecas (capital)" },
+  { value: "Guadalupe", label: "Guadalupe" },
+  { value: "Fresnillo", label: "Fresnillo" },
+  { value: "Jerez", label: "Jerez de García Salinas" },
+  { value: "Sombrerete", label: "Sombrerete" },
+  { value: "Río Grande", label: "Río Grande" },
+  { value: "Calera", label: "Calera" },
+  { value: "Ojocaliente", label: "Ojocaliente" },
+  { value: "Pinos", label: "Pinos" },
+  { value: "Loreto", label: "Loreto" },
+  { value: "Miguel Auza", label: "Miguel Auza" },
+  { value: "Nochistlán", label: "Nochistlán de Mejía" },
+  { value: "Villa de Cos", label: "Villa de Cos" },
+  { value: "Villanueva", label: "Villanueva" },
+  { value: "Juan Aldama", label: "Juan Aldama" },
+  { value: "Concepción del Oro", label: "Concepción del Oro" },
+  { value: "Valparaíso", label: "Valparaíso" },
+  { value: "Jalpa", label: "Jalpa" },
+  { value: "Teúl de González Ortega", label: "Teúl de González Ortega" },
+  { value: "Mazapil", label: "Mazapil" },
 ];
 
 type Lead = {
@@ -115,7 +115,7 @@ export default function App() {
   const [results, setResults] = useState<Lead[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = useState(TERMS[0].value);
-  const [selectedCity, setSelectedCity] = useState(CITIES_GTO[0].value);
+  const [selectedCity, setSelectedCity] = useState(CITIES_ZAC[0].value);
   const [limit, setLimit] = useState(20);
 
   const handleEnrich = async () => {
@@ -429,7 +429,7 @@ export default function App() {
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
           >
-            {CITIES_GTO.map((c) => (
+            {CITIES_ZAC.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.label}
               </option>
@@ -502,7 +502,7 @@ export default function App() {
                       href={
                         r.mapsLink ||
                         `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                          r.address
+                          r.address,
                         )}`
                       }
                       target="_blank"
@@ -569,7 +569,7 @@ export default function App() {
                     href={
                       r.mapsLink ||
                       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        r.address
+                        r.address,
                       )}`
                     }
                     target="_blank"

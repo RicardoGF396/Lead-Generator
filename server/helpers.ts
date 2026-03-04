@@ -9,7 +9,6 @@ export async function scrapeEmailsFromWebsite(url: string, maxBytes = 300_000): 
         const res = await axios.get(url, {
             maxContentLength: maxBytes,
             timeout: 12000,
-            // A veces los sitios bloquean sin user agent
             headers: { 'User-Agent': 'Mozilla/5.0 (LeadBot/1.0)' },
             validateStatus: () => true
         })
